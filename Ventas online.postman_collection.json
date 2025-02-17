@@ -1,0 +1,727 @@
+{
+	"info": {
+		"_postman_id": "18e27f0e-273e-4fd4-a1ac-4e86ddb2c35c",
+		"name": "Ventas online",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37956985"
+	},
+	"item": [
+		{
+			"name": "Usuario",
+			"item": [
+				{
+					"name": "ADMIN",
+					"item": [
+						{
+							"name": "Registrar usuario ADMIN",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Cesar12",
+											"type": "text"
+										},
+										{
+											"key": "surname",
+											"value": "CesarUser12",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "Certero12",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "certero12.colo@yahoo.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Hola@Cesar12.",
+											"type": "text"
+										},
+										{
+											"key": "phone",
+											"value": "36661501",
+											"type": "text"
+										},
+										{
+											"key": "role",
+											"value": "CLIENT",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:2636/v1/user",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All For ADMIN",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:2636/v1/user",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update datos ADMIN",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Cesar15Up",
+											"type": "text"
+										},
+										{
+											"key": "surname",
+											"value": "CesarUser15Up",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "Certero15Up",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "certero15.colo@yahoo.comUp",
+											"type": "text"
+										},
+										{
+											"key": "phone",
+											"value": "36661595",
+											"type": "text"
+										},
+										{
+											"key": "role",
+											"value": "ADMIN",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:2636/v1/user/67b190d15d8383f7598745b8",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"user",
+										"67b190d15d8383f7598745b8"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete user ADMIN",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "password",
+											"value": "Admin123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:2636/v1/user/67b24118232984e13e26b3dc",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"user",
+										"67b24118232984e13e26b3dc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create category",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Electrodomesticos10",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "0123456789",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:2636/v1/category",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"category"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Category",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Limpieza9",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "0123456789",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:2636/v1/category/67b27c97eb551113f2587c1b",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"category",
+										"67b27c97eb551113f2587c1b"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete category",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:2636/v1/category/67b18e44740040e5a5a51eaf",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"category",
+										"67b18e44740040e5a5a51eaf"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Product \"Para probar si al eliminar category se autoreasigna\"",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Galletas oreo",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "alimento, galletas de chocolate",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "10.15",
+											"type": "text"
+										},
+										{
+											"key": "stock",
+											"value": "100",
+											"type": "text"
+										},
+										{
+											"key": "category",
+											"value": "67b18e44740040e5a5a51eaf",
+											"type": "text"
+										},
+										{
+											"key": "soldCount",
+											"value": "10",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:2636/v1/product",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"product"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Product \"Para probar si al eliminar category se autoreasigna\"",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:2636/v1/product",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"product"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "All users",
+					"item": [
+						{
+							"name": "Login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var data = JSON.parse(responseBody);\r",
+											"postman.setGlobalVariable(\"token\", data.token)"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "userLoggin",
+											"value": "admintotal",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Admin123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:2636/v1/user/login",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"user",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Id user",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:2636/v1/user/67b24c7f10378dde476a1ace",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"user",
+										"67b24c7f10378dde476a1ace"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdatePassword",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "currentPassword",
+											"value": "Hola@Cesar12.C",
+											"type": "text"
+										},
+										{
+											"key": "newPassword",
+											"value": "Hola@Cesar12.Up",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:2636/v1/user/updatePassword/67afb74aa555b1d6931b0890",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"user",
+										"updatePassword",
+										"67afb74aa555b1d6931b0890"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Id Caregory",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:2636/v1/category/67b18da90b39f64cb894fa8c",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"category",
+										"67b18da90b39f64cb894fa8c"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Category",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:2636/v1/category",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"category"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "CLIENT",
+					"item": [
+						{
+							"name": "Registrar Cliente",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Cesar14Cc",
+											"type": "text"
+										},
+										{
+											"key": "surname",
+											"value": "CesarUser14c",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "Certero14Cc",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "certeroC14.colo@yahoo.comc",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Hola@Cesar14.C",
+											"type": "text"
+										},
+										{
+											"key": "phone",
+											"value": "36661501",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:2636/v1/user/register-client",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"user",
+										"register-client"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update For Client",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Cesar14CUp",
+											"type": "text"
+										},
+										{
+											"key": "surname",
+											"value": "CesarUser14CUp",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "Certero144CUp",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "certero14.colo@yahoo.comCUp",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:2636/v1/user/update-cliente/67b2708208cc8e8fe0984296",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"user",
+										"update-cliente",
+										"67b2708208cc8e8fe0984296"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete For Client",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "password",
+											"value": "Hola@Cesar12.Up",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:2636/v1/user/delete-client/67afb74aa555b1d6931b0890",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"user",
+										"delete-client",
+										"67afb74aa555b1d6931b0890"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
