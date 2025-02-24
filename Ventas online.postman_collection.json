@@ -215,7 +215,7 @@
 									"urlencoded": [
 										{
 											"key": "name",
-											"value": "Electrodomesticos10",
+											"value": "Comida enlatada",
 											"type": "text"
 										},
 										{
@@ -322,32 +322,32 @@
 									"urlencoded": [
 										{
 											"key": "name",
-											"value": "Galletas oreo",
+											"value": "Atun agua vegetal",
 											"type": "text"
 										},
 										{
 											"key": "description",
-											"value": "alimento, galletas de chocolate",
+											"value": "10 Gramos de atun vegatal",
 											"type": "text"
 										},
 										{
 											"key": "price",
-											"value": "10.15",
+											"value": "7.15",
 											"type": "text"
 										},
 										{
 											"key": "stock",
-											"value": "100",
+											"value": "55",
 											"type": "text"
 										},
 										{
 											"key": "category",
-											"value": "67b18e44740040e5a5a51eaf",
+											"value": "67bbfe6e422cf0308eade016",
 											"type": "text"
 										},
 										{
 											"key": "soldCount",
-											"value": "10",
+											"value": "5",
 											"type": "text"
 										}
 									]
@@ -386,6 +386,32 @@
 									"path": [
 										"v1",
 										"product"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete product",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:2636/v1/product/67bbf86f40a507455cd0a8a4",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"product",
+										"67bbf86f40a507455cd0a8a4"
 									]
 								}
 							},
@@ -558,6 +584,110 @@
 									"path": [
 										"v1",
 										"category"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Best Products",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:2636/v1/product/bestProducts",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"product",
+										"bestProducts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get by name",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "agua",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:2636/v1/product/byName",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"product",
+										"byName"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get by category",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "category",
+											"value": "Electrodomesticos",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:2636/v1/product/byCategory",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"product",
+										"byCategory"
 									]
 								}
 							},

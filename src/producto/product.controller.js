@@ -1,7 +1,7 @@
 import Product from './product.model.js'
-
+import Category from '../category/category.model.js'
 // Obtener todos los productos
-export const getAllProducts = async (req, res) => {
+export const getAllProducts = async (req, res)=>{
     try {
         let { limit = 20, skip = 0 } = req.query;
 
@@ -9,7 +9,6 @@ export const getAllProducts = async (req, res) => {
         limit = Math.max(parseInt(limit, 10), 1);
         skip = Math.max(parseInt(skip, 10), 0);
 
-        // Obtener productos y poblar la categoría
         const products = await Product.find()
             .populate("category", "name description").skip(skip).limit(limit)
 
@@ -74,5 +73,81 @@ export const deleteProduct = async (req, res) =>{
     }catch (error){
         console.error(error)
         return res.status(500).send({ success: false, message: 'General error', error })
+    }
+}
+
+export const getBestSellingProducts = async (req, res) => {
+    try {
+        let { limit = 20, skip = 0 } = req.query
+
+        // Convertir a número y validar que sean positivos
+        limit = Math.max(parseInt(limit, 10), 1)
+        skip = Math.max(parseInt(skip, 10), 0)
+
+        // Buscar productos, ordenarlos por los más vendidos y poblar la categoría
+        const products = await Product.find()
+            .populate("category", "name description")
+            .sort({ soldCount: -1 }) // Ordenar por productos más vendidos
+            .skip(skip)
+            .limit(limit);
+
+        if (products.length === 0) {
+            return res.status(404).send({ success: false, message: "No products found" })
+        }
+
+        return res.send({ success: true, message: "Best-selling products retrieved", products })
+
+    } catch (error) {
+        console.error("Error fetching best-selling products:", error)
+        return res.status(500).send({ message: "General error", error })
+    }
+}
+
+// Buscar productos por nombre
+export const searchProductsByName = async (req, res) => {
+    try {
+        const { name } = req.body
+        if (!name) {
+            return res.status(400).send({ success: false, message: "Product name is required" })
+        }
+
+        const products = await Product.find({ name: { $regex: name, $options: "i" } }).populate("category", "name description")
+        if (products.length === 0) {
+            return res.status(404).send({ success: false, message: "No products found" })
+        }
+        return res.send({ success: true, message: "Products found", products })
+    } catch (error) {
+        console.error(error)
+        return res.status(500).send({ success: false, message: "General error", error })
+    }
+};
+
+
+// Buscar productos por categoría
+export const searchProductsByCategory = async (req, res) => {
+    try {
+        const {category} = req.body
+        if(!category){
+            return res.status(400).send({ success: false, message: "Category is required"})
+        }
+        let categoryFilter = {};
+        if (category.match(/^[0-9a-fA-F]{24}$/)) {
+            categoryFilter = { _id: category }
+        }else{
+            categoryFilter = { name: { $regex: category, $options: "i" } }
+        }
+
+        const categoryData = await Category.findOne(categoryFilter)
+        if (!categoryData) {
+            return res.status(404).send({ success: false, message: "Category not found"})
+        }
+        const products = await Product.find({ category: categoryData._id }).populate("category", "name description")
+        if (products.length === 0) {
+            return res.status(404).send({ success: false, message: "No products found in this category"})
+        }
+        return res.send({ success: true, message: "Products retrieved by category", products})
+    }catch (error){
+        console.error(error)
+        return res.status(500).send({ success: false, message: "General error", error})
     }
 }
