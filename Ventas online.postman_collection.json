@@ -255,18 +255,18 @@
 									"urlencoded": [
 										{
 											"key": "name",
-											"value": "Limpieza",
+											"value": "Comida congelada",
 											"type": "text"
 										},
 										{
 											"key": "description",
-											"value": "Limpieza del hogar",
+											"value": "Comida congelada- caliente antes de consumir",
 											"type": "text"
 										}
 									]
 								},
 								"url": {
-									"raw": "localhost:2636/v1/category/67c4d103212a7ec91af70c9a",
+									"raw": "localhost:2636/v1/category/67c56bddeeea13052cd56be4",
 									"host": [
 										"localhost"
 									],
@@ -274,7 +274,7 @@
 									"path": [
 										"v1",
 										"category",
-										"67c4d103212a7ec91af70c9a"
+										"67c56bddeeea13052cd56be4"
 									]
 								}
 							},
@@ -292,7 +292,7 @@
 									}
 								],
 								"url": {
-									"raw": "localhost:2636/v1/category/67b18e44740040e5a5a51eaf",
+									"raw": "localhost:2636/v1/category/67c56c5eeeea13052cd56bf1",
 									"host": [
 										"localhost"
 									],
@@ -300,7 +300,7 @@
 									"path": [
 										"v1",
 										"category",
-										"67b18e44740040e5a5a51eaf"
+										"67c56c5eeeea13052cd56bf1"
 									]
 								}
 							},
@@ -322,22 +322,22 @@
 									"urlencoded": [
 										{
 											"key": "name",
-											"value": "Pan integral",
+											"value": "Jugete 2",
 											"type": "text"
 										},
 										{
 											"key": "description",
-											"value": "12 gramos de pan integral",
+											"value": "pelota verde",
 											"type": "text"
 										},
 										{
 											"key": "price",
-											"value": "5.50",
+											"value": "4.95",
 											"type": "text"
 										},
 										{
 											"key": "stock",
-											"value": "35",
+											"value": "50",
 											"type": "text"
 										},
 										{
@@ -403,7 +403,7 @@
 									}
 								],
 								"url": {
-									"raw": "localhost:2636/v1/product/67bbf86f40a507455cd0a8a4",
+									"raw": "localhost:2636/v1/product/67c56caeeeea13052cd56bfb",
 									"host": [
 										"localhost"
 									],
@@ -411,7 +411,7 @@
 									"path": [
 										"v1",
 										"product",
-										"67bbf86f40a507455cd0a8a4"
+										"67c56caeeeea13052cd56bfb"
 									]
 								}
 							},
@@ -438,6 +438,71 @@
 										"v1",
 										"product",
 										"out-of-stock"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update product",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Atun agua vegetal y aceite 5",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "description",
+											"value": "10 Gramos de atun vegatal y aceite",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "price",
+											"value": "10.5",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "stock",
+											"value": "25",
+											"type": "text"
+										},
+										{
+											"key": "category",
+											"value": "67c4acedfc2f74bb5b75833e",
+											"type": "text"
+										},
+										{
+											"key": "soldCount",
+											"value": "20",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:2636/v1/product/67c4adc2fc2f74bb5b758347",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"product",
+										"67c4adc2fc2f74bb5b758347"
 									]
 								}
 							},
@@ -660,7 +725,7 @@
 									"urlencoded": [
 										{
 											"key": "name",
-											"value": "agua",
+											"value": "Atun",
 											"type": "text"
 										}
 									]
@@ -903,7 +968,7 @@
 								},
 								{
 									"key": "quantity",
-									"value": "10",
+									"value": "1",
 									"type": "text"
 								}
 							]
@@ -1035,7 +1100,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nit\": \"123456789\",\r\n  \"cardNumber\": \"4111111111111111\",\r\n  \"items\": [\r\n    { \r\n      \"productId\": \"67c4acf6fc2f74bb5b758341\", \r\n      \"quantity\": 5 \r\n    }\r\n  ]\r\n}",
+							"raw": "{\r\n  \"nit\": \"123456789\",\r\n  \"cardNumber\": \"4111111111111111\",\r\n  \"items\": [\r\n    { \r\n      \"productId\": \"67c4acf6fc2f74bb5b758341\", \r\n      \"quantity\": 15 \r\n    }\r\n  ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1043,7 +1108,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:2636/v1/invoice/67c4dfbc2e36de94047324e1",
+							"raw": "localhost:2636/v1/invoice/67c56ea5eeea13052cd56c35",
 							"host": [
 								"localhost"
 							],
@@ -1051,7 +1116,7 @@
 							"path": [
 								"v1",
 								"invoice",
-								"67c4dfbc2e36de94047324e1"
+								"67c56ea5eeea13052cd56c35"
 							]
 						}
 					},
@@ -1094,7 +1159,7 @@
 							}
 						],
 						"url": {
-							"raw": "localhost:2636/v1/invoice/invoice-for-admin/67c4add5fc2f74bb5b75834b",
+							"raw": "localhost:2636/v1/invoice/invoice-for-admin/67c4f066ba939e9dc47ba131",
 							"host": [
 								"localhost"
 							],
@@ -1103,7 +1168,7 @@
 								"v1",
 								"invoice",
 								"invoice-for-admin",
-								"67c4add5fc2f74bb5b75834b"
+								"67c4f066ba939e9dc47ba131"
 							]
 						}
 					},

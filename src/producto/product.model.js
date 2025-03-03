@@ -31,7 +31,8 @@ const productSchema = Schema(
         },
         soldCount: {
             type: Number,
-            default: 0
+            default: 0,
+            min: [0, 'Sold count cannot be negative']
         }
     },
     { timestamps: true }

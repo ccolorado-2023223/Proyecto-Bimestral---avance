@@ -38,6 +38,10 @@ export const getProductById = async (req, res) =>{
 export const createProduct = async (req, res) =>{
     try{
         const newProduct = new Product(req.body)
+        const categoryId = req.body.category
+        const category = await Category.findById(categoryId)
+        if(!category) return res.status(400).send({success: false, message: 'Category not found'} )
+
         await newProduct.save()
         return res.status(201).send({ success: true, message: 'Product created', newProduct })
     }catch (error) {
@@ -50,9 +54,15 @@ export const createProduct = async (req, res) =>{
 export const updateProduct = async (req, res) =>{
     try{
         const { id } = req.params
-        const updatedProduct = await Product.findByIdAndUpdate(id, req.body, { new: true })
-        if (!updatedProduct) return res.status(404).send({ success: false, message: 'Product not found' })
-        return res.send({ success: true, message: 'Product updated', updatedProduct })
+        const produtc = await Product.findById(id)
+        const categoryId = req.body.category
+        if (!produtc) return res.status(404).send({ success: false, message: 'Product not found' })
+            
+        const category = await Category.findById(categoryId)
+        if(!category) return res.status(404).send({success: false, message: 'Category not found'})
+                
+        const updatedProduct = await Product.findByIdAndUpdate(id, req.body,{ new:true})
+        return res.send({ success: true, message: 'Product updated', updatedProduct})
     }catch (error) {
         console.error(error)
         return res.status(500).send({ success: false, message: 'General error', error })

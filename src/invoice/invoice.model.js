@@ -25,6 +25,7 @@ const invoiceSchema = new Schema(
         items: [
             {
                 product: { type: Schema.Types.ObjectId, ref: "Product", required: true },
+                productName:{type: String},
                 price: { type: Number, required: true },
                 quantity: { type: Number, required: true }
             }

@@ -1,6 +1,6 @@
 import { body } from "express-validator"
 import { validateError, validateErrorsWithoutFiles} from "./validate.error.js"
-import { existUsername, notRequiredField, existCategory } from "../utils/db.validators.js"
+import { existUsername, notRequiredField, existCategory, existProduct } from "../utils/db.validators.js"
 import { existEmail } from "../utils/db.validators.js"
 import express from "express"
 
@@ -29,7 +29,7 @@ export const registerValidator = [
     body('phone', 'Phone cannot be empty')
         .notEmpty()
         .isMobilePhone(),
-        validateError
+        validateErrorsWithoutFiles
 ]
 
 export const updateUserVAlidatorAdmin =[
@@ -80,5 +80,88 @@ export const validateCategory =[
         .notEmpty()
         .isLength({min:10 , max: 200})
         .withMessage('Description need min 10 characters'),
-        validateError
+        validateErrorsWithoutFiles
+]
+
+export const cartValidator = [
+    body('items.*.product')
+        .notEmpty()
+        .withMessage('Product ID is required')
+        .isMongoId()
+        .withMessage('Invalid product ID'),
+    body('items.*.quantity')
+        .notEmpty()
+        .withMessage('Quantity is required')
+        .isInt({ min: 1 })
+        .withMessage('Quantity must be at least 1'),
+    validateErrorsWithoutFiles
+]
+
+export const productValidator = [
+    body('name')
+        .notEmpty()
+        .withMessage('Product name cannot be empty')
+        .isLength({ min: 3, max: 100 })
+        .withMessage('Product name must be between 3 and 100 characters')
+        .custom(existProduct),
+    body('description')
+        .notEmpty()
+        .isLength({ max: 500 })
+        .withMessage(`Description can't exceed 500 characters`),
+    body('price')
+        .notEmpty()
+        .withMessage('Price cannot be empty')
+        .isFloat({ min: 0 })
+        .withMessage('Price must be a positive number'),
+    body('stock')
+        .notEmpty()
+        .withMessage('Stock cannot be empty')
+        .isInt({ min: 0 })
+        .withMessage('Stock must be a non-negative integer'),
+    body('category')
+        .notEmpty()
+        .withMessage('Category is required')
+        .isMongoId()
+        .withMessage('Invalid category ID'),
+    body('imageUrl')
+        .optional()
+        .isURL().withMessage('Invalid image URL'),
+    validateErrorsWithoutFiles
+]
+
+export const updateProductValidator = [
+    body('name')
+        .optional()
+        .notEmpty()
+        .withMessage('Product name cannot be empty')
+        .isLength({ min: 3, max: 100 })
+        .withMessage('Product name must be between 3 and 100 characters')
+        .custom(existProduct),
+    body('description')
+        .optional()
+        .notEmpty()
+        .isLength({ max: 500 })
+        .withMessage(`Description can't exceed 500 characters`),
+    body('price')
+        .optional()
+        .notEmpty()
+        .withMessage('Price cannot be empty')
+        .isFloat({ min: 0 })
+        .withMessage('Price must be a positive number'),
+    body('stock')
+        .optional()
+        .notEmpty()
+        .withMessage('Stock cannot be empty')
+        .isInt({ min: 0 })
+        .withMessage('Stock must be a non-negative integer'),
+    body('category')
+        .optional()
+        .notEmpty()
+        .withMessage('Category is required')
+        .isMongoId()
+        .withMessage('Invalid category ID'),
+    body('imageUrl')
+        .optional()
+        .isURL().withMessage('Invalid image URL'),
+    validateErrorsWithoutFiles
 ]

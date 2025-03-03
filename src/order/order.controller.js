@@ -4,10 +4,10 @@ import Product from "../producto/product.model.js"
 import Invoice from '../invoice/invoice.model.js'
 import User from '../user/user.model.js'
 
-export const checkout = async (req, res) => {
+export const checkout = async (req, res) => { 
     try {
         const userId = req.user._id;
-        const { NIT: NIT, cardNumber } = req.body; // Recibimos NIT y tarjeta
+        const { NIT, cardNumber } = req.body;
 
         if (!NIT || !cardNumber) {
             return res.status(400).send({ success: false, message: "NIT and card number are required" });
@@ -29,7 +29,7 @@ export const checkout = async (req, res) => {
                 insufficientStock.push({
                     product: item.product.name,
                     available: item.product.stock
-                })
+                });
             }
             total += item.product.price * item.quantity;
         }
@@ -39,7 +39,7 @@ export const checkout = async (req, res) => {
                 success: false,
                 message: "Insufficient stock for some products",
                 insufficientStock
-            })
+            });
         }
 
         // Reducir stock
@@ -54,31 +54,33 @@ export const checkout = async (req, res) => {
             user: userId,
             items: cart.items.map(item => ({
                 product: item.product._id,
+                productName: item.product.name,
                 quantity: item.quantity,
                 price: item.product.price
             })),
             total,
             status: "completed"
-        })
-
+        });
         await order.save();
+
         const user = await User.findById(userId);
 
         // Crear factura
         const invoice = new Invoice({
             user: userId,
             userName: user.name,
-            NIT: NIT,
+            NIT,
             cardNumber,
             date: new Date(),
             items: cart.items.map(item => ({
+                product: item.product._id, // Asegúrate de usar `product` aquí
                 productName: item.product.name,
                 price: item.product.price,
                 quantity: item.quantity
             })),
             total
-        })
-        await invoice.save()
+        });
+        await invoice.save();
 
         await Cart.findOneAndUpdate({ user: userId }, { items: [] });
 
@@ -87,12 +89,13 @@ export const checkout = async (req, res) => {
             message: "Purchase completed. Invoice generated", 
             order, 
             invoice 
-        })
+        });
     } catch (error) {
         console.error("Error in checkout:", error);
         return res.status(500).send({ success: false, message: "General error", error });
     }
-}
+};
+
 
 
 export const getPurchaseHistory = async (req, res) => {
