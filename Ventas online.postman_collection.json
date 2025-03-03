@@ -215,12 +215,12 @@
 									"urlencoded": [
 										{
 											"key": "name",
-											"value": "Comida enlatada",
+											"value": "Mascotas",
 											"type": "text"
 										},
 										{
 											"key": "description",
-											"value": "0123456789",
+											"value": "Para las mascotas",
 											"type": "text"
 										}
 									]
@@ -255,18 +255,18 @@
 									"urlencoded": [
 										{
 											"key": "name",
-											"value": "Limpieza9",
+											"value": "Limpieza",
 											"type": "text"
 										},
 										{
 											"key": "description",
-											"value": "0123456789",
+											"value": "Limpieza del hogar",
 											"type": "text"
 										}
 									]
 								},
 								"url": {
-									"raw": "localhost:2636/v1/category/67b27c97eb551113f2587c1b",
+									"raw": "localhost:2636/v1/category/67c4d103212a7ec91af70c9a",
 									"host": [
 										"localhost"
 									],
@@ -274,7 +274,7 @@
 									"path": [
 										"v1",
 										"category",
-										"67b27c97eb551113f2587c1b"
+										"67c4d103212a7ec91af70c9a"
 									]
 								}
 							},
@@ -322,32 +322,32 @@
 									"urlencoded": [
 										{
 											"key": "name",
-											"value": "Atun agua vegetal",
+											"value": "Pan integral",
 											"type": "text"
 										},
 										{
 											"key": "description",
-											"value": "10 Gramos de atun vegatal",
+											"value": "12 gramos de pan integral",
 											"type": "text"
 										},
 										{
 											"key": "price",
-											"value": "7.15",
+											"value": "5.50",
 											"type": "text"
 										},
 										{
 											"key": "stock",
-											"value": "55",
+											"value": "35",
 											"type": "text"
 										},
 										{
 											"key": "category",
-											"value": "67bbfe6e422cf0308eade016",
+											"value": "67c4ab90fc2f74bb5b758333",
 											"type": "text"
 										},
 										{
 											"key": "soldCount",
-											"value": "5",
+											"value": "0",
 											"type": "text"
 										}
 									]
@@ -412,6 +412,32 @@
 										"v1",
 										"product",
 										"67bbf86f40a507455cd0a8a4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Productos agotados",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:2636/v1/product/out-of-stock",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"product",
+										"out-of-stock"
 									]
 								}
 							},
@@ -550,7 +576,7 @@
 									}
 								],
 								"url": {
-									"raw": "localhost:2636/v1/category/67b18da90b39f64cb894fa8c",
+									"raw": "localhost:2636/v1/category/67c4acedfc2f74bb5b75833e",
 									"host": [
 										"localhost"
 									],
@@ -558,7 +584,7 @@
 									"path": [
 										"v1",
 										"category",
-										"67b18da90b39f64cb894fa8c"
+										"67c4acedfc2f74bb5b75833e"
 									]
 								}
 							},
@@ -616,7 +642,7 @@
 							"response": []
 						},
 						{
-							"name": "Get by name",
+							"name": "Get product by name",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -655,7 +681,7 @@
 							"response": []
 						},
 						{
-							"name": "Get by category",
+							"name": "Get produt by category",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -673,7 +699,7 @@
 									"urlencoded": [
 										{
 											"key": "category",
-											"value": "Electrodomesticos",
+											"value": "67c4ab90fc2f74bb5b758333",
 											"type": "text"
 										}
 									]
@@ -715,32 +741,32 @@
 									"urlencoded": [
 										{
 											"key": "name",
-											"value": "Cesar14Cc",
+											"value": "Cesar12",
 											"type": "text"
 										},
 										{
 											"key": "surname",
-											"value": "CesarUser14c",
+											"value": "CesarUser12",
 											"type": "text"
 										},
 										{
 											"key": "username",
-											"value": "Certero14Cc",
+											"value": "Certero12",
 											"type": "text"
 										},
 										{
 											"key": "email",
-											"value": "certeroC14.colo@yahoo.comc",
+											"value": "certeroC12.colo@yahoo.comc",
 											"type": "text"
 										},
 										{
 											"key": "password",
-											"value": "Hola@Cesar14.C",
+											"value": "Hola@Cesar12.",
 											"type": "text"
 										},
 										{
 											"key": "phone",
-											"value": "36661501",
+											"value": "36660102",
 											"type": "text"
 										}
 									]
@@ -791,13 +817,13 @@
 										},
 										{
 											"key": "email",
-											"value": "certero14.colo@yahoo.comCUp",
+											"value": "certero14.colo@yahoo.comUp",
 											"type": "text"
 										}
 									]
 								},
 								"url": {
-									"raw": "localhost:2636/v1/user/update-cliente/67b2708208cc8e8fe0984296",
+									"raw": "localhost:2636/v1/user/update-cliente/67c4f066ba939e9dc47ba131",
 									"host": [
 										"localhost"
 									],
@@ -806,7 +832,7 @@
 										"v1",
 										"user",
 										"update-cliente",
-										"67b2708208cc8e8fe0984296"
+										"67c4f066ba939e9dc47ba131"
 									]
 								}
 							},
@@ -828,13 +854,13 @@
 									"urlencoded": [
 										{
 											"key": "password",
-											"value": "Hola@Cesar12.Up",
+											"value": "Hola@Cesar12.",
 											"type": "text"
 										}
 									]
 								},
 								"url": {
-									"raw": "localhost:2636/v1/user/delete-client/67afb74aa555b1d6931b0890",
+									"raw": "localhost:2636/v1/user/delete-client/67c4ef242e36de94047324ef",
 									"host": [
 										"localhost"
 									],
@@ -843,13 +869,245 @@
 										"v1",
 										"user",
 										"delete-client",
-										"67afb74aa555b1d6931b0890"
+										"67c4ef242e36de94047324ef"
 									]
 								}
 							},
 							"response": []
 						}
 					]
+				}
+			]
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "Agregar productos al carrito",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "productId",
+									"value": "67c4acf6fc2f74bb5b758341",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "10",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2636/v1/cart",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"v1",
+								"cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ver carrito del usuario",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:2636/v1/cart",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"v1",
+								"cart"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Completar Orden",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "NIT",
+									"value": "123456789",
+									"type": "text"
+								},
+								{
+									"key": "cardNumber",
+									"value": "4111111111111111",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2636/v1/order",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"v1",
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Historial de compras",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:2636/v1/order",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"v1",
+								"order"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Invoice",
+			"item": [
+				{
+					"name": "Update invoice",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nit\": \"123456789\",\r\n  \"cardNumber\": \"4111111111111111\",\r\n  \"items\": [\r\n    { \r\n      \"productId\": \"67c4acf6fc2f74bb5b758341\", \r\n      \"quantity\": 5 \r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:2636/v1/invoice/67c4dfbc2e36de94047324e1",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"v1",
+								"invoice",
+								"67c4dfbc2e36de94047324e1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get invoice by user",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:2636/v1/invoice",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"v1",
+								"invoice"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get invoice for admin",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:2636/v1/invoice/invoice-for-admin/67c4add5fc2f74bb5b75834b",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"v1",
+								"invoice",
+								"invoice-for-admin",
+								"67c4add5fc2f74bb5b75834b"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}

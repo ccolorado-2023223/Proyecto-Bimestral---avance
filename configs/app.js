@@ -8,6 +8,9 @@ import userRouter from '../src/user/user.routes.js'
 import categoryRouter from '../src/category/category.routes.js'
 import { limiter } from '../middlewares/rate.limit.js'
 import productRoutes from '../src/producto/product.routes.js'
+import cartRouter from '../src/cart/cart.router.js'
+import orderRouter from '../src/order/order.router.js'
+import invoiceRouter from '../src/invoice/invoice.router.js'
 
 const configs = (app)=>{
     app.use(express.json())
@@ -22,6 +25,9 @@ const routes = (app)=>{
     app.use('/v1/user', userRouter)
     app.use('/v1/category', categoryRouter)
     app.use('/v1/product', productRoutes)
+    app.use('/v1/cart', cartRouter)
+    app.use('/v1/order',orderRouter)
+    app.use('/v1/invoice',invoiceRouter)
 }
 
 //Ejecutar SErver

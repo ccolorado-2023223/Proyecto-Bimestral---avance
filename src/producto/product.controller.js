@@ -4,8 +4,6 @@ import Category from '../category/category.model.js'
 export const getAllProducts = async (req, res)=>{
     try {
         let { limit = 20, skip = 0 } = req.query;
-
-        // Convertir a número y validar que sean positivos
         limit = Math.max(parseInt(limit, 10), 1);
         skip = Math.max(parseInt(skip, 10), 0);
 
@@ -22,10 +20,8 @@ export const getAllProducts = async (req, res)=>{
         console.error("Error fetching products:", error);
         return res.status(500).send({ message: "General error", error });
     }
-};
+}
 
-
-// Obtener un producto por ID
 export const getProductById = async (req, res) =>{
     try{
         const { id } = req.params
@@ -38,7 +34,7 @@ export const getProductById = async (req, res) =>{
     }
 }
 
-// Crear un nuevo producto
+
 export const createProduct = async (req, res) =>{
     try{
         const newProduct = new Product(req.body)
@@ -79,15 +75,12 @@ export const deleteProduct = async (req, res) =>{
 export const getBestSellingProducts = async (req, res) => {
     try {
         let { limit = 20, skip = 0 } = req.query
-
-        // Convertir a número y validar que sean positivos
         limit = Math.max(parseInt(limit, 10), 1)
         skip = Math.max(parseInt(skip, 10), 0)
 
-        // Buscar productos, ordenarlos por los más vendidos y poblar la categoría
         const products = await Product.find()
             .populate("category", "name description")
-            .sort({ soldCount: -1 }) // Ordenar por productos más vendidos
+            .sort({ soldCount: -1 })
             .skip(skip)
             .limit(limit);
 
@@ -103,7 +96,6 @@ export const getBestSellingProducts = async (req, res) => {
     }
 }
 
-// Buscar productos por nombre
 export const searchProductsByName = async (req, res) => {
     try {
         const { name } = req.body
@@ -120,10 +112,8 @@ export const searchProductsByName = async (req, res) => {
         console.error(error)
         return res.status(500).send({ success: false, message: "General error", error })
     }
-};
+}
 
-
-// Buscar productos por categoría
 export const searchProductsByCategory = async (req, res) => {
     try {
         const {category} = req.body
@@ -151,3 +141,19 @@ export const searchProductsByCategory = async (req, res) => {
         return res.status(500).send({ success: false, message: "General error", error})
     }
 }
+
+export const getOutOfStockProducts = async (req, res) => {
+    try {
+        const outOfStockProducts = await Product.find({ stock: 0 });
+
+        if (outOfStockProducts.length === 0) {
+            return res.status(200).send({ success: true, message: "No out-of-stock products found", products: [] });
+        }
+
+        return res.status(200).send({ success: true, products: outOfStockProducts });
+
+    } catch (error) {
+        console.error("Error fetching out-of-stock products:", error);
+        return res.status(500).send({ success: false, message: "General error", error });
+    }
+};

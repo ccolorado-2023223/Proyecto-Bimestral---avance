@@ -267,6 +267,7 @@ export const updateUserClient = async(req,res)=>{
 export const deleteUserClient = async(req,res)=>{
     try{
         const {id} = req.params
+        //const id = req.body._is
 
         const {password} = req.body
 
