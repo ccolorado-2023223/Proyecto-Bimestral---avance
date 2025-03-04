@@ -97,6 +97,21 @@ export const cartValidator = [
     validateErrorsWithoutFiles
 ]
 
+export const cartValidatorUpdate = [
+    body('items.*.product')
+        .notEmpty()
+        .withMessage('Product ID is required')
+        .isMongoId()
+        .withMessage('Invalid product ID'),
+    body('items.*.quantity')
+        .optional()
+        .notEmpty()
+        .withMessage('Quantity is required')
+        .isInt({ min: 1 })
+        .withMessage('Quantity must be at least 1'),
+    validateErrorsWithoutFiles
+]
+
 export const productValidator = [
     body('name')
         .notEmpty()

@@ -198,315 +198,6 @@
 								}
 							},
 							"response": []
-						},
-						{
-							"name": "Create category",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "{{token}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "urlencoded",
-									"urlencoded": [
-										{
-											"key": "name",
-											"value": "Mascotas",
-											"type": "text"
-										},
-										{
-											"key": "description",
-											"value": "Para las mascotas",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "localhost:2636/v1/category",
-									"host": [
-										"localhost"
-									],
-									"port": "2636",
-									"path": [
-										"v1",
-										"category"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Update Category",
-							"request": {
-								"method": "PUT",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "{{token}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "urlencoded",
-									"urlencoded": [
-										{
-											"key": "name",
-											"value": "Comida congelada",
-											"type": "text"
-										},
-										{
-											"key": "description",
-											"value": "Comida congelada- caliente antes de consumir",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "localhost:2636/v1/category/67c56bddeeea13052cd56be4",
-									"host": [
-										"localhost"
-									],
-									"port": "2636",
-									"path": [
-										"v1",
-										"category",
-										"67c56bddeeea13052cd56be4"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Delete category",
-							"request": {
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "{{token}}",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "localhost:2636/v1/category/67c56c5eeeea13052cd56bf1",
-									"host": [
-										"localhost"
-									],
-									"port": "2636",
-									"path": [
-										"v1",
-										"category",
-										"67c56c5eeeea13052cd56bf1"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Product \"Para probar si al eliminar category se autoreasigna\"",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "{{token}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "urlencoded",
-									"urlencoded": [
-										{
-											"key": "name",
-											"value": "Jugete 2",
-											"type": "text"
-										},
-										{
-											"key": "description",
-											"value": "pelota verde",
-											"type": "text"
-										},
-										{
-											"key": "price",
-											"value": "4.95",
-											"type": "text"
-										},
-										{
-											"key": "stock",
-											"value": "50",
-											"type": "text"
-										},
-										{
-											"key": "category",
-											"value": "67c4ab90fc2f74bb5b758333",
-											"type": "text"
-										},
-										{
-											"key": "soldCount",
-											"value": "0",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "localhost:2636/v1/product",
-									"host": [
-										"localhost"
-									],
-									"port": "2636",
-									"path": [
-										"v1",
-										"product"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Product \"Para probar si al eliminar category se autoreasigna\"",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "{{token}}",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "localhost:2636/v1/product",
-									"host": [
-										"localhost"
-									],
-									"port": "2636",
-									"path": [
-										"v1",
-										"product"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "delete product",
-							"request": {
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "{{token}}",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "localhost:2636/v1/product/67c56caeeeea13052cd56bfb",
-									"host": [
-										"localhost"
-									],
-									"port": "2636",
-									"path": [
-										"v1",
-										"product",
-										"67c56caeeeea13052cd56bfb"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Productos agotados",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "{{token}}",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "localhost:2636/v1/product/out-of-stock",
-									"host": [
-										"localhost"
-									],
-									"port": "2636",
-									"path": [
-										"v1",
-										"product",
-										"out-of-stock"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Update product",
-							"request": {
-								"method": "PUT",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "{{token}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "urlencoded",
-									"urlencoded": [
-										{
-											"key": "name",
-											"value": "Atun agua vegetal y aceite 5",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "description",
-											"value": "10 Gramos de atun vegatal y aceite",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "price",
-											"value": "10.5",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "stock",
-											"value": "25",
-											"type": "text"
-										},
-										{
-											"key": "category",
-											"value": "67c4acedfc2f74bb5b75833e",
-											"type": "text"
-										},
-										{
-											"key": "soldCount",
-											"value": "20",
-											"type": "text",
-											"disabled": true
-										}
-									]
-								},
-								"url": {
-									"raw": "localhost:2636/v1/product/67c4adc2fc2f74bb5b758347",
-									"host": [
-										"localhost"
-									],
-									"port": "2636",
-									"path": [
-										"v1",
-										"product",
-										"67c4adc2fc2f74bb5b758347"
-									]
-								}
-							},
-							"response": []
 						}
 					]
 				},
@@ -573,7 +264,7 @@
 									}
 								],
 								"url": {
-									"raw": "localhost:2636/v1/user/67b24c7f10378dde476a1ace",
+									"raw": "localhost:2636/v1/user/67c65d30d76ca88cd30cd001",
 									"host": [
 										"localhost"
 									],
@@ -581,7 +272,7 @@
 									"path": [
 										"v1",
 										"user",
-										"67b24c7f10378dde476a1ace"
+										"67c65d30d76ca88cd30cd001"
 									]
 								}
 							},
@@ -603,18 +294,18 @@
 									"urlencoded": [
 										{
 											"key": "currentPassword",
-											"value": "Hola@Cesar12.C",
+											"value": "Hola@Cesar1.",
 											"type": "text"
 										},
 										{
 											"key": "newPassword",
-											"value": "Hola@Cesar12.Up",
+											"value": "Hola@Cesar11.Up",
 											"type": "text"
 										}
 									]
 								},
 								"url": {
-									"raw": "localhost:2636/v1/user/updatePassword/67afb74aa555b1d6931b0890",
+									"raw": "localhost:2636/v1/user/updatePassword/67c68b37cdc6a5a8abe00606",
 									"host": [
 										"localhost"
 									],
@@ -623,162 +314,7 @@
 										"v1",
 										"user",
 										"updatePassword",
-										"67afb74aa555b1d6931b0890"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Id Caregory",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "{{token}}",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "localhost:2636/v1/category/67c4acedfc2f74bb5b75833e",
-									"host": [
-										"localhost"
-									],
-									"port": "2636",
-									"path": [
-										"v1",
-										"category",
-										"67c4acedfc2f74bb5b75833e"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get All Category",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "{{token}}",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "localhost:2636/v1/category",
-									"host": [
-										"localhost"
-									],
-									"port": "2636",
-									"path": [
-										"v1",
-										"category"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Best Products",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "{{token}}",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "localhost:2636/v1/product/bestProducts",
-									"host": [
-										"localhost"
-									],
-									"port": "2636",
-									"path": [
-										"v1",
-										"product",
-										"bestProducts"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get product by name",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "{{token}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "urlencoded",
-									"urlencoded": [
-										{
-											"key": "name",
-											"value": "Atun",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "localhost:2636/v1/product/byName",
-									"host": [
-										"localhost"
-									],
-									"port": "2636",
-									"path": [
-										"v1",
-										"product",
-										"byName"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get produt by category",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "{{token}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "urlencoded",
-									"urlencoded": [
-										{
-											"key": "category",
-											"value": "67c4ab90fc2f74bb5b758333",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "localhost:2636/v1/product/byCategory",
-									"host": [
-										"localhost"
-									],
-									"port": "2636",
-									"path": [
-										"v1",
-										"product",
-										"byCategory"
+										"67c68b37cdc6a5a8abe00606"
 									]
 								}
 							},
@@ -806,32 +342,32 @@
 									"urlencoded": [
 										{
 											"key": "name",
-											"value": "Cesar12",
+											"value": "Cesar1",
 											"type": "text"
 										},
 										{
 											"key": "surname",
-											"value": "CesarUser12",
+											"value": "CesarUser1",
 											"type": "text"
 										},
 										{
 											"key": "username",
-											"value": "Certero12",
+											"value": "Certero1",
 											"type": "text"
 										},
 										{
 											"key": "email",
-											"value": "certeroC12.colo@yahoo.comc",
+											"value": "certeroC1.colo@yahoo.comc",
 											"type": "text"
 										},
 										{
 											"key": "password",
-											"value": "Hola@Cesar12.",
+											"value": "Hola@Cesar1.",
 											"type": "text"
 										},
 										{
 											"key": "phone",
-											"value": "36660102",
+											"value": "36660101",
 											"type": "text"
 										}
 									]
@@ -868,27 +404,30 @@
 										{
 											"key": "name",
 											"value": "Cesar14CUp",
-											"type": "text"
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "surname",
 											"value": "CesarUser14CUp",
-											"type": "text"
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "username",
 											"value": "Certero144CUp",
-											"type": "text"
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "email",
-											"value": "certero14.colo@yahoo.comUp",
+											"value": "certero12.colo@yahoo.comUp",
 											"type": "text"
 										}
 									]
 								},
 								"url": {
-									"raw": "localhost:2636/v1/user/update-cliente/67c4f066ba939e9dc47ba131",
+									"raw": "localhost:2636/v1/user/update-cliente/67c65d30d76ca88cd30cd001",
 									"host": [
 										"localhost"
 									],
@@ -897,7 +436,7 @@
 										"v1",
 										"user",
 										"update-cliente",
-										"67c4f066ba939e9dc47ba131"
+										"67c65d30d76ca88cd30cd001"
 									]
 								}
 							},
@@ -919,13 +458,13 @@
 									"urlencoded": [
 										{
 											"key": "password",
-											"value": "Hola@Cesar12.",
+											"value": "Hola@Cesar12.Up",
 											"type": "text"
 										}
 									]
 								},
 								"url": {
-									"raw": "localhost:2636/v1/user/delete-client/67c4ef242e36de94047324ef",
+									"raw": "localhost:2636/v1/user/delete-client/67c65d30d76ca88cd30cd001",
 									"host": [
 										"localhost"
 									],
@@ -934,7 +473,7 @@
 										"v1",
 										"user",
 										"delete-client",
-										"67c4ef242e36de94047324ef"
+										"67c65d30d76ca88cd30cd001"
 									]
 								}
 							},
@@ -963,12 +502,12 @@
 							"urlencoded": [
 								{
 									"key": "productId",
-									"value": "67c4acf6fc2f74bb5b758341",
+									"value": "67c65fabd76ca88cd30cd03a",
 									"type": "text"
 								},
 								{
 									"key": "quantity",
-									"value": "1",
+									"value": "8",
 									"type": "text"
 								}
 							]
@@ -998,6 +537,52 @@
 								"type": "text"
 							}
 						],
+						"url": {
+							"raw": "localhost:2636/v1/cart",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"v1",
+								"cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Cart",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "productId",
+									"value": "67c65fabd76ca88cd30cd03a",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "15",
+									"type": "text"
+								},
+								{
+									"key": "remove",
+									"value": "true",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
 						"url": {
 							"raw": "localhost:2636/v1/cart",
 							"host": [
@@ -1100,7 +685,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nit\": \"123456789\",\r\n  \"cardNumber\": \"4111111111111111\",\r\n  \"items\": [\r\n    { \r\n      \"productId\": \"67c4acf6fc2f74bb5b758341\", \r\n      \"quantity\": 15 \r\n    }\r\n  ]\r\n}",
+							"raw": "{\r\n  \"items\": [\r\n    { \"productId\": \"67c66025d76ca88cd30cd03f\", \"quantity\": 10 },\r\n    {\"productId\":\"67c6607ed76ca88cd30cd046\", \"quantity\":6}\r\n  ],\r\n  \"nit\": \"1234567\",\r\n  \"cardNumber\": \"4111111111111111\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1108,7 +693,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:2636/v1/invoice/67c56ea5eeea13052cd56c35",
+							"raw": "localhost:2636/v1/invoice/67c67ca7e1090f34abd651f7",
 							"host": [
 								"localhost"
 							],
@@ -1116,14 +701,14 @@
 							"path": [
 								"v1",
 								"invoice",
-								"67c56ea5eeea13052cd56c35"
+								"67c67ca7e1090f34abd651f7"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Get invoice by user",
+					"name": "Historial de Facturas",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1169,6 +754,480 @@
 								"invoice",
 								"invoice-for-admin",
 								"67c4f066ba939e9dc47ba131"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Get produt by category",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "category",
+									"value": "67c65ed3d76ca88cd30cd021",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2636/v1/product/byCategory",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"v1",
+								"product",
+								"byCategory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get product by name",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "azul",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2636/v1/product/byName",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"v1",
+								"product",
+								"byName"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Best Products",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:2636/v1/product/bestProducts",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"v1",
+								"product",
+								"bestProducts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update product",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Atun agua vegetal y aceite 5",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "10 Gramos de atun vegatal y aceite",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "10.5",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "stock",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "67c65ed3d76ca88cd30cd021",
+									"type": "text"
+								},
+								{
+									"key": "soldCount",
+									"value": "20",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2636/v1/product/67c66184d76ca88cd30cd05a",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"v1",
+								"product",
+								"67c66184d76ca88cd30cd05a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Productos agotados",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:2636/v1/product/out-of-stock",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"v1",
+								"product",
+								"out-of-stock"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete product",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:2636/v1/product/67c6612dd76ca88cd30cd04e",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"v1",
+								"product",
+								"67c6612dd76ca88cd30cd04e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product \"Para probar si al eliminar category se autoreasigna\"",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:2636/v1/product",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"v1",
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product \"Para probar si al eliminar category se autoreasigna\"",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "producto para probar",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "probar",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "10.60",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "40",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "67c65ed3d76ca88cd30cd021",
+									"type": "text"
+								},
+								{
+									"key": "soldCount",
+									"value": "0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2636/v1/product",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"v1",
+								"product"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Delete category",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:2636/v1/category/67c65f42d76ca88cd30cd02d",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"v1",
+								"category",
+								"67c65f42d76ca88cd30cd02d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Category",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Comida congelada",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Comida congelada- caliente antes de consumir",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2636/v1/category/67c65eebd76ca88cd30cd025",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"v1",
+								"category",
+								"67c65eebd76ca88cd30cd025"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Para eliminar",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Para eliminar probar",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2636/v1/category",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"v1",
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Id Caregory",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:2636/v1/category/67c65c45d76ca88cd30ccff5",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"v1",
+								"category",
+								"67c65c45d76ca88cd30ccff5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Category",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:2636/v1/category",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"v1",
+								"category"
 							]
 						}
 					},

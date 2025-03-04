@@ -1,6 +1,7 @@
 import User from './user.model.js'
 import { checkPassword, encrypt } from "../../utils/encryp.js"
 import { generateJwt } from "../../utils/jwt.js"
+import LoginHistory from "./loginHistory.model.js"
 
 // -------------------------------------- ADMIN -----------------------------------\\
 //register
@@ -137,32 +138,49 @@ export const deleteUserAdmin = async (req, res) => {
 
 // ----------------------------------------- Neutros ---------------------------------\\
 
-//login
-export const login = async(req,res)=>{
-    try{
-        let {userLoggin, password} =req.body
+export const login = async (req, res) => {
+    try {
+        let { userLoggin, password } = req.body;
+
         let user = await User.findOne({
-            $or: [{email: userLoggin},
-                {username: userLoggin}]
-        })
-        if(user && await checkPassword(user.password, password)){
+            $or: [{ email: userLoggin }, { username: userLoggin }]
+        });
+
+        if (user && await checkPassword(user.password, password)) {
             let loggedUser = {
                 uid: user._id,
                 username: user.username,
                 name: user.name,
                 role: user.role
-            }
-            let token = await generateJwt(loggedUser)
-            return res.send(
-                {message: `Welcome ${user.name}`, loggedUser,token}
-            )
+            };
+
+            let token = await generateJwt(loggedUser);
+
+            // Guardar el login en el historial
+            await LoginHistory.create({
+                user: user._id,
+                loginDate: new Date()
+            });
+
+            // Obtener historial de este usuario
+            const userLoginHistory = await LoginHistory.find({ user: user._id })
+                .sort({ loginDate: -1 })
+                .limit(10); // Limitar a los últimos 10 logins
+
+            return res.send({
+                message: `Welcome ${user.name}`,
+                loggedUser,
+                token,
+                loginHistory: userLoginHistory
+            });
         }
-        return res.status(400).send({message: 'Invalid credentials'})
-    }catch(err){
-        console.error(err)
-        return res.status(500).send({message: 'General error with login function',err})
+
+        return res.status(400).send({ message: "Invalid credentials" });
+    } catch (err) {
+        console.error(err);
+        return res.status(500).send({ message: "General error with login function", err });
     }
-}
+};
 
 
 //Obtener id
@@ -188,8 +206,12 @@ export const get = async( req, res)=>{
 export const updateUserPassword = async (req, res) => {
     try {
         const { id } = req.params
+        const userId = req.user._id
         const { currentPassword, newPassword } = req.body
 
+        if (userId.toString() !== id) {
+            return res.status(403).send({ message: "You can only update your own password" });
+        }
         if (!currentPassword || !newPassword) {
             return res.status(400).send({ message: "Current password and new password are required" })
         }
@@ -267,7 +289,11 @@ export const updateUserClient = async(req,res)=>{
 export const deleteUserClient = async(req,res)=>{
     try{
         const {id} = req.params
-        //const id = req.body._is
+        const userId = req.user._id
+
+        if (userId.toString() !== id) {
+            return res.status(403).send({ message: "You can only delete your own password" });
+        }
 
         const {password} = req.body
 

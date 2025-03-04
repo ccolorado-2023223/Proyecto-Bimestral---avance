@@ -4,82 +4,92 @@ import mongoose from 'mongoose';
 
 export const editInvoice = async (req, res) => {
     try {
-        const { invoiceId } = req.params;
-        console.log("Request body:", req.body);
+        const { invoiceId } = req.params
+        console.log("Request body:", req.body)
 
         // Buscar la factura
-        const invoice = await Invoice.findById(invoiceId);
+        const invoice = await Invoice.findById(invoiceId)
         if (!invoice) {
-            return res.status(404).send({ success: false, message: "Invoice not found" });
+            return res.status(404).send({ success: false, message: "Invoice not found" })
         }
 
-        // Extraer datos del cuerpo de la solicitud
-        const { items, nit, cardNumber } = req.body;
+        const { items, nit, cardNumber } = req.body
 
-        // Si `items` no existe, devolver error
         if (!items || !Array.isArray(items)) {
-            return res.status(400).send({ success: false, message: "Items array is required" });
+            return res.status(400).send({ success: false, message: "Items array is required" })
         }
 
         let total = 0;
-        let insufficientStock = [];
+        let insufficientStock = []
 
-        // Verificar stock y calcular total
+        // Verificar stock y actualizar productos
         for (let item of items) {
-            // Convertir productId a ObjectId correctamente
-            const productId = new mongoose.Types.ObjectId(item.productId);  // ✅ Solución
-        
-            const product = await Product.findById(productId);
-        
+            const productId = new mongoose.Types.ObjectId(item.productId)
+            const product = await Product.findById(productId)
+
             if (!product) {
-                return res.status(404).send({ success: false, message: `Product ${item.productId} not found` });
+                return res.status(404).send({ success: false, message: `Product ${item.productId} not found` })
             }
-        
-            if (product.stock < item.quantity) {
-                insufficientStock.push({ product: product.name, available: product.stock });
+
+            // Buscar el producto en la factura actual para comparar cantidades
+            const existingItem = invoice.items.find(i => i.product.toString() === item.productId)
+            const previousQuantity = existingItem ? existingItem.quantity : 0;
+            const quantityDifference = item.quantity - previousQuantity; // Diferencia en cantidad
+
+            if (quantityDifference > 0 && product.stock < quantityDifference) {
+                insufficientStock.push({ product: product.name, available: product.stock })
             }
-        
-            total += product.price * item.quantity;
         }
 
-        if (insufficientStock.length > 0) {
+        if (insufficientStock.length > 0){
             return res.status(400).send({
                 success: false,
                 message: "Insufficient stock for some products",
                 insufficientStock
-            });
+            })
         }
 
-        // Actualizar la factura solo para modificar la cantidad de productos (sin cambiar el producto ni el precio)
-        // Construir los nuevos items con el precio incluido
+        // Actualizar stock y construir los nuevos items con precios
         const updatedItems = await Promise.all(items.map(async (item) => {
-            const product = await Product.findById(item.productId);
+            const product = await Product.findById(item.productId)
             if (!product) {
-                throw new Error(`Product ${item.productId} not found`);
+                throw new Error(`Product ${item.productId} not found`)
+            }
+
+            // Comparar la cantidad nueva con la anterior y ajustar el stock
+            const existingItem = invoice.items.find(i => i.product.toString() === item.productId)
+            const previousQuantity = existingItem ? existingItem.quantity : 0
+            const quantityDifference = item.quantity - previousQuantity
+
+            if (quantityDifference !== 0){
+                await Product.findByIdAndUpdate(item.productId, {
+                    $inc: { stock: -quantityDifference }
+                })
             }
 
             return {
                 product: product._id,
-                price: product.price, // ✅ Agregar el precio del producto
+                price: product.price,
                 quantity: item.quantity
             }
         }))
 
-       // Asignar los items actualizados a la factura
-        invoice.items = updatedItems;
-        invoice.total = updatedItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
-        invoice.NIT = nit;
-        invoice.cardNumber = cardNumber;
+        // Asignar los items actualizados a la factura
+        invoice.items = updatedItems
+        invoice.total = updatedItems.reduce((sum, item) => sum + item.price * item.quantity, 0)
+        invoice.NIT = nit
+        invoice.cardNumber = cardNumber
 
-        await invoice.save();
+        await invoice.save()
 
-        return res.status(200).send({ success: true, message: "Invoice updated successfully", invoice });
+        return res.status(200).send({ success: true, message: "Invoice updated successfully", invoice })
 
-    } catch (error) {
+    }catch (error){
         console.error("Error editing invoice:", error);
-        return res.status(500).send({ success: false, message: "General error", error });
+        return res.status(500).send({ success: false, message: "General error", error })
     }
-};
+}
+
 
 export const getInvoicesByUser = async(req, res)=>{
     try{

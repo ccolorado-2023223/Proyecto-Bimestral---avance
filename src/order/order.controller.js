@@ -6,22 +6,22 @@ import User from '../user/user.model.js'
 
 export const checkout = async (req, res) => { 
     try {
-        const userId = req.user._id;
-        const { NIT, cardNumber } = req.body;
+        const userId = req.user._id
+        const { NIT, cardNumber} = req.body
 
         if (!NIT || !cardNumber) {
-            return res.status(400).send({ success: false, message: "NIT and card number are required" });
+            return res.status(400).send({ success: false, message: "NIT and card number are required" })
         }
 
         // Obtener carrito
-        const cart = await Cart.findOne({ user: userId }).populate("items.product");
+        const cart = await Cart.findOne({ user: userId }).populate("items.product")
 
         if (!cart || cart.items.length === 0) {
-            return res.status(400).send({ success: false, message: "Cart is empty" });
+            return res.status(400).send({ success: false, message: "Cart is empty" })
         }
 
-        let total = 0;
-        let insufficientStock = [];
+        let total = 0
+        let insufficientStock = []
 
         // Verificar stock y calcular total
         for (let item of cart.items) {
@@ -31,7 +31,7 @@ export const checkout = async (req, res) => {
                     available: item.product.stock
                 });
             }
-            total += item.product.price * item.quantity;
+            total += item.product.price * item.quantity
         }
 
         if (insufficientStock.length > 0) {
@@ -39,14 +39,14 @@ export const checkout = async (req, res) => {
                 success: false,
                 message: "Insufficient stock for some products",
                 insufficientStock
-            });
+            })
         }
 
         // Reducir stock
         for (let item of cart.items) {
             await Product.findByIdAndUpdate(item.product._id, {
                 $inc: { stock: -item.quantity, soldCount: item.quantity }
-            });
+            })
         }
 
         // Crear orden
@@ -61,9 +61,9 @@ export const checkout = async (req, res) => {
             total,
             status: "completed"
         });
-        await order.save();
+        await order.save()
 
-        const user = await User.findById(userId);
+        const user = await User.findById(userId)
 
         // Crear factura
         const invoice = new Invoice({
@@ -73,28 +73,27 @@ export const checkout = async (req, res) => {
             cardNumber,
             date: new Date(),
             items: cart.items.map(item => ({
-                product: item.product._id, // Asegúrate de usar `product` aquí
+                product: item.product._id,
                 productName: item.product.name,
                 price: item.product.price,
                 quantity: item.quantity
             })),
             total
-        });
-        await invoice.save();
+        })
+        await invoice.save()
 
-        await Cart.findOneAndUpdate({ user: userId }, { items: [] });
+        await Cart.findOneAndUpdate({ user: userId }, { items: [] })
 
         return res.status(201).send({ 
             success: true, 
             message: "Purchase completed. Invoice generated", 
-            order, 
             invoice 
-        });
+        })
     } catch (error) {
-        console.error("Error in checkout:", error);
-        return res.status(500).send({ success: false, message: "General error", error });
+        console.error("Error in checkout:", error)
+        return res.status(500).send({ success: false, message: "General error", error })
     }
-};
+}
 
 
 
